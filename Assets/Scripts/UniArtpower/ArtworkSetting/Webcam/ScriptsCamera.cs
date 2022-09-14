@@ -129,6 +129,19 @@ public class ScriptsCamera : MonoBehaviour
         callback?.Invoke();
     }
 
+    public void RedrawMesh(MeshRenderer toMesh){
+        // Debug.Log(webcamTexture);
+        // if(webcamTexture)
+        //     Debug.Log(webcamTexture.isPlaying);
+        // Debug.Log(toMesh);
+
+        if(webcamTexture == null)
+            return;
+
+        if(toMesh)
+            toMesh.material.mainTexture = webcamTexture;
+    }
+
     public void PauseWebcam(){
         drawPixels.enabled = false;
 
