@@ -2,29 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
-using DG.Tweening;
-using UnityEngine.SceneManagement;
 
 public class ScneneController : MonoBehaviour
 {
-    public static ScneneController instance;
-    public ScriptsCamera obsCam;
-    public CanvasGroup toFadeGroup;
-    public float fadeTime = 0.7f;
-    public float LoadingBuffTime = 1;
-
     public GameObject screenNumber;
     public GameObject cubes;
+    public GameObject ef1;
+    public GameObject ef2;
+    public GameObject ef3;
 
-    public string Scene_Root;
-    public string Scene_5;
-    public string Scene_6;
-    public string Scene_7;
-    public string Scene_8;
+    void Start(){
 
-    void Awake(){
-        instance = this;
     }
 
     void Update()
@@ -39,38 +27,17 @@ public class ScneneController : MonoBehaviour
             cubes.SetActive(!cubes.activeSelf);
         }
 
+        if(Input.GetKeyDown(KeyCode.F3)){
+            //Debug.Log('1');
+            ef1.SetActive(!ef1.activeSelf);
+        }
         if(Input.GetKeyDown(KeyCode.F4)){
-            GoStage(Scene_Root);
+            //Debug.Log('1');
+            ef2.SetActive(!ef2.activeSelf);
         }
-
         if(Input.GetKeyDown(KeyCode.F5)){
-            GoStage(Scene_5);
+            //Debug.Log('1');
+            ef3.SetActive(!ef3.activeSelf);
         }
-        if(Input.GetKeyDown(KeyCode.F6)){
-
-        }
-        if(Input.GetKeyDown(KeyCode.F7)){
-
-        }
-        if(Input.GetKeyDown(KeyCode.F8)){
-
-        }
-    }
-
-    async void GoStage(string sceneName){
-        await FireFadeEffect(() => {
-            SceneManager.LoadScene(sceneName);
-        });
-    }
-
-    async Task FireFadeEffect(System.Action doThing){
-        toFadeGroup.DOFade(1, fadeTime);
-        await Task.Delay(Mathf.FloorToInt(fadeTime * 1000));
-        
-        doThing?.Invoke();
-
-        await Task.Delay(Mathf.FloorToInt(LoadingBuffTime * 1000));
-
-        toFadeGroup.DOFade(0, fadeTime);
     }
 }
