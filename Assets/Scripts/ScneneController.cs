@@ -47,13 +47,13 @@ public class ScneneController : MonoBehaviour
             GoStage(Scene_5);
         }
         if(Input.GetKeyDown(KeyCode.F6)){
-            GoStage(Scene_6);
+
         }
         if(Input.GetKeyDown(KeyCode.F7)){
-            GoStage(Scene_7);
+
         }
         if(Input.GetKeyDown(KeyCode.F8)){
-            GoStage(Scene_8);
+
         }
     }
 

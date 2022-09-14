@@ -1246,8 +1246,8 @@ MonoBehaviour:
   cubes: {fileID: 2069408314}
   Scene_Root: Main
   Scene_5: S_3
-  Scene_6: S_5
-  Scene_7: S_10
+  Scene_6: S_3
+  Scene_7: S_3
   Scene_8: S_3
 --- !u!1 &763851579
 GameObject:
