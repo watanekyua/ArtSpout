@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScneneController : MonoBehaviour
 {
@@ -17,11 +18,15 @@ public class ScneneController : MonoBehaviour
     public GameObject screenNumber;
     public GameObject cubes;
 
+    public GameObject v360Ball;
+
     public string Scene_Root;
     public string Scene_5;
     public string Scene_6;
     public string Scene_7;
     public string Scene_8;
+
+    public Text logTime;
 
     void Awake(){
         instance = this;
@@ -55,11 +60,18 @@ public class ScneneController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F8)){
             GoStage(Scene_8);
         }
+
+        logTime.text = "Time:" + Time.time;
     }
 
     async void GoStage(string sceneName){
         await FireFadeEffect(() => {
             SceneManager.LoadScene(sceneName);
+            if(sceneName == Scene_Root){
+                v360Ball.SetActive(true);
+            } else {
+                v360Ball.SetActive(false);
+            }
         });
     }
 
@@ -72,5 +84,6 @@ public class ScneneController : MonoBehaviour
         await Task.Delay(Mathf.FloorToInt(LoadingBuffTime * 1000));
 
         toFadeGroup.DOFade(0, fadeTime);
+        obsCam.StartWebcam(null);
     }
 }
